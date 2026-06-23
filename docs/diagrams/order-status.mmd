@@ -1,0 +1,38 @@
+stateDiagram-v2
+    [*] --> pending
+
+    pending --> processing: Aceptar Pedido
+    pending --> cancelled: Cancelar
+
+    processing --> shipped: Enviar
+    processing --> cancelled: Cancelar
+
+    shipped --> delivered: Entregado
+
+    delivered --> [*]
+    cancelled --> [*]
+
+    state pending {
+        [*] --> pending_label
+        pending_label: pending\n(Pendiente)
+    }
+
+    state processing {
+        [*] --> processing_label
+        processing_label: processing\n(Procesando)
+    }
+
+    state shipped {
+        [*] --> shipped_label
+        shipped_label: shipped\n(Enviado)
+    }
+
+    state delivered {
+        [*] --> delivered_label
+        delivered_label: delivered\n(Entregado)
+    }
+
+    state cancelled {
+        [*] --> cancelled_label
+        cancelled_label: cancelled\n(Cancelado)
+    }

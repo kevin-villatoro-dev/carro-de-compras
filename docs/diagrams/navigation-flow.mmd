@@ -1,0 +1,20 @@
+flowchart TD
+    home["Página de Inicio\n(/)"]
+    products["Catálogo de\nProductos\n(/products)"]
+    detail["Detalle de\nProducto\n(/products/:slug)"]
+    cart["Carrito de\nCompras\n(/cart)"]
+    checkout["Checkout\n(/checkout)"]
+    confirmation["Confirmación\nde Pedido"]
+    notfound["404\nNo Encontrado"]
+
+    home -->|Explorar Productos| products
+    home -.->|Producto Destacado| detail
+    products -->|Ver Detalle| detail
+    detail -->|Agregar al Carrito| cart
+    detail -.->|Volver al Catálogo| products
+    cart -->|Pagar| checkout
+    cart -.->|Seguir Comprando| products
+    checkout -->|Pedido Exitoso| confirmation
+    checkout -.->|Cancelar| products
+    confirmation -->|Seguir Comprando| products
+    confirmation -.->|Ir al Inicio| home
