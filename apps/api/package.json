@@ -1,0 +1,39 @@
+{
+  "name": "api",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^11.0.0",
+    "@fastify/jwt": "^10.1.0",
+    "@fastify/rate-limit": "^11.0.0",
+    "@shopping-cart/shared-types": "workspace:*",
+    "@shopping-cart/validation": "workspace:*",
+    "dotenv": "^16.4.0",
+    "drizzle-orm": "^0.38.0",
+    "fastify": "^5.2.0",
+    "postgres": "^3.4.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@types/node": "^22.10.0",
+    "drizzle-kit": "^0.30.0",
+    "eslint": "^9.15.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.15.0"
+  }
+}

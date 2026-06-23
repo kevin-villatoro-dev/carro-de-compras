@@ -1,0 +1,1 @@
+export { useBrands } from './hooks/useBrands'

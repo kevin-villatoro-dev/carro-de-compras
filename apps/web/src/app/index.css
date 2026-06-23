@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --color-ink: #111111;
+  --color-parchment: #fafaf8;
+  --color-paper: #ffffff;
+  --color-ember: #e85d04;
+  --color-ember-hover: #d45303;
+  --color-slate: #6b7280;
+  --color-sage: #059669;
+  --color-crimson: #dc2626;
+  --color-border: #e5e5e5;
+  --color-text: #111111;
+  --color-text-muted: #6b7280;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-parchment);
+}
+
+::selection {
+  background-color: rgba(232, 93, 4, 0.12);
+  color: var(--color-ink);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 2px;
+}
+
+/* Animations — purposeful, not scattered */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.25s ease-out forwards;
+}
+
+.animate-reveal {
+  animation: reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger delays for lists */
+.delay-0 { animation-delay: 0ms; }
+.delay-1 { animation-delay: 60ms; }
+.delay-2 { animation-delay: 120ms; }
+.delay-3 { animation-delay: 180ms; }
+.delay-4 { animation-delay: 240ms; }
+.delay-5 { animation-delay: 300ms; }
+.delay-6 { animation-delay: 360ms; }
+.delay-7 { animation-delay: 420ms; }
+
+/* Card signature: shelf hover */
+.card-shelf {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-shelf::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-ember);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-shelf:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.12);
+}
+
+.card-shelf:hover::after {
+  transform: scaleX(1);
+}
+
+/* Scrollbar */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Category pill */
+.category-pill {
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+  transition: all 0.2s ease;
+}
+
+.category-pill:hover {
+  border-color: transparent;
+  background: var(--color-ember);
+  color: #fff;
+}
+
+/* Price tag */
+.price-tag {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
