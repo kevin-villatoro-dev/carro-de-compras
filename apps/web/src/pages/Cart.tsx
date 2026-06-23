@@ -65,7 +65,7 @@ export default function Cart() {
               style={{ background: 'var(--color-paper)', animationDelay: `${i * 60}ms` }}
             >
               {/* Image */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg flex-none overflow-hidden flex items-center justify-center" style={{ background: '#f5f5f4' }}>
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-lg flex-none overflow-hidden flex items-center justify-center" style={{ background: 'var(--color-surface)' }}>
                 {item.image ? (
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
                 ) : (
@@ -81,10 +81,7 @@ export default function Cart() {
                   </h3>
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="flex-none p-1 transition-colors"
-                    style={{ color: '#d1d5db' }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-crimson)'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = '#d1d5db'}
+                    className="flex-none p-1 text-gray-300 hover:text-red-500 transition-colors"
                     aria-label="Eliminar producto"
                   >
                     <Trash2 className="h-3.5 w-3.5" />

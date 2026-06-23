@@ -79,14 +79,14 @@ export function HeroSlider() {
               </h2>
               <p
                 key={`sub-${current}`}
-                className="text-lg sm:text-xl text-white/80 mb-8 max-w-lg animate-fade-in-up animation-delay-200"
+                className="text-lg sm:text-xl text-white/80 mb-8 max-w-lg animate-fade-in-up delay-2"
               >
                 {slide.subtitle}
               </p>
               <Link
                 to="/products"
                 key={`cta-${current}`}
-                className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-white/90 transition-all hover:scale-105 animate-fade-in-up animation-delay-400"
+                className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-white/90 transition-all hover:scale-105 animate-fade-in-up delay-4"
               >
                 {slide.cta}
                 <ArrowRight className="h-5 w-5" />
@@ -94,7 +94,7 @@ export function HeroSlider() {
             </div>
             <div
               key={`emoji-${current}`}
-              className="text-7xl sm:text-8xl md:text-9xl animate-fade-in-scale select-none"
+              className="text-7xl sm:text-8xl md:text-9xl animate-fade-in select-none"
             >
               {slide.emoji}
             </div>

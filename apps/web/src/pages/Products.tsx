@@ -117,11 +117,11 @@ export default function Products() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
           {[...Array(8)].map((_, i) => (
             <div key={i} className="rounded-xl overflow-hidden animate-pulse" style={{ background: 'var(--color-paper)' }}>
-              <div className="aspect-square" style={{ background: '#f0f0f0' }} />
+              <div className="aspect-square" style={{ background: 'var(--color-surface)' }} />
               <div className="p-4 space-y-2">
-                <div className="h-3 rounded w-1/3" style={{ background: '#e5e5e5' }} />
-                <div className="h-4 rounded w-3/4" style={{ background: '#e5e5e5' }} />
-                <div className="h-4 rounded w-1/2" style={{ background: '#e5e5e5' }} />
+                <div className="h-3 rounded w-1/3" style={{ background: 'var(--color-border)' }} />
+                <div className="h-4 rounded w-3/4" style={{ background: 'var(--color-border)' }} />
+                <div className="h-4 rounded w-1/2" style={{ background: 'var(--color-border)' }} />
               </div>
             </div>
           ))}

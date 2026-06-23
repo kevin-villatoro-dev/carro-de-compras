@@ -108,26 +108,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <span className="font-display text-lg font-bold" style={{ color: '#fff' }}>
                 Shop<span style={{ color: 'var(--color-ember)' }}>Cart</span>
               </span>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: '#9ca3af' }}>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: 'var(--color-muted)' }}>
                 Tu tienda de confianza. Productos curados, precios honestos.
               </p>
             </div>
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#9ca3af' }}>Tienda</h4>
-              <ul className="space-y-2 text-sm" style={{ color: '#d1d5db' }}>
+              <h4 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: 'var(--color-muted)' }}>Tienda</h4>
+              <ul className="space-y-2 text-sm" style={{ color: 'var(--color-secondary)' }}>
                 <li><Link to="/products" className="hover:text-white transition-colors">Todos los Productos</Link></li>
                 <li><Link to="/products" className="hover:text-white transition-colors">Ofertas</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: '#9ca3af' }}>Contacto</h4>
-              <ul className="space-y-2 text-sm" style={{ color: '#d1d5db' }}>
+              <h4 className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: 'var(--color-muted)' }}>Contacto</h4>
+              <ul className="space-y-2 text-sm" style={{ color: 'var(--color-secondary)' }}>
                 <li>soporte@shopcart.com</li>
                 <li>+1 (555) 123-4567</li>
               </ul>
             </div>
           </div>
-          <div className="mt-8 pt-6 border-t text-center text-xs" style={{ borderColor: '#333', color: '#6b7280' }}>
+          <div className="mt-8 pt-6 border-t text-center text-xs" style={{ borderColor: 'var(--color-footer-border)', color: 'var(--color-slate)' }}>
             © 2026 ShopCart
           </div>
         </div>

@@ -70,6 +70,22 @@ export interface CheckoutResponse {
   message: string
 }
 
+export interface OrderResponse {
+  id: string
+  userId: string
+  status: string
+  total: string
+  shippingAddress?: string
+  items: Array<{
+    id: string
+    productId: string
+    quantity: number
+    price: string
+  }>
+  createdAt: string
+  updatedAt: string
+}
+
 export const api = {
   products: {
     list: (params?: { search?: string; category?: string; brand?: string }) => {
@@ -89,7 +105,7 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(input),
     }),
-    get: (id: string) => fetchAPI<any>(`/orders/${id}`),
+    get: (id: string) => fetchAPI<OrderResponse>(`/orders/${id}`),
   },
 }
 

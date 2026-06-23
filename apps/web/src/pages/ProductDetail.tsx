@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useProduct } from '@/features/products/hooks/useProducts'
 import { useCartStore } from '@/features/cart/store/cartStore'
+import { calcDiscount } from '@/lib/api'
 import { ShoppingCart, ArrowLeft, Minus, Plus } from 'lucide-react'
 import { useState } from 'react'
 
@@ -26,13 +27,13 @@ export default function ProductDetail() {
   if (isLoading) {
     return (
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10 animate-pulse">
-        <div className="h-6 rounded w-32 mb-10" style={{ background: '#e5e5e5' }} />
+        <div className="h-6 rounded w-32 mb-10" style={{ background: 'var(--color-border)' }} />
         <div className="grid md:grid-cols-2 gap-10">
-          <div className="aspect-square rounded-2xl" style={{ background: '#e5e5e5' }} />
+          <div className="aspect-square rounded-2xl" style={{ background: 'var(--color-border)' }} />
           <div className="space-y-4">
-            <div className="h-4 rounded w-24" style={{ background: '#e5e5e5' }} />
-            <div className="h-8 rounded w-3/4" style={{ background: '#e5e5e5' }} />
-            <div className="h-10 rounded w-1/3" style={{ background: '#e5e5e5' }} />
+            <div className="h-4 rounded w-24" style={{ background: 'var(--color-border)' }} />
+            <div className="h-8 rounded w-3/4" style={{ background: 'var(--color-border)' }} />
+            <div className="h-10 rounded w-1/3" style={{ background: 'var(--color-border)' }} />
           </div>
         </div>
       </div>
@@ -55,7 +56,7 @@ export default function ProductDetail() {
   }
 
   const discount = product.compareAtPrice
-    ? Math.round(((parseFloat(product.compareAtPrice) - parseFloat(product.price)) / parseFloat(product.compareAtPrice)) * 100)
+    ? calcDiscount(product.price, product.compareAtPrice)
     : 0
 
   return (
@@ -71,7 +72,7 @@ export default function ProductDetail() {
 
       <div className="grid md:grid-cols-2 gap-10 lg:gap-14">
         {/* Image */}
-        <div className="relative aspect-square rounded-2xl overflow-hidden flex items-center justify-center" style={{ background: '#f5f5f4' }}>
+        <div className="relative aspect-square rounded-2xl overflow-hidden flex items-center justify-center" style={{ background: 'var(--color-surface)' }}>
           {product.images?.[0] ? (
             <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
           ) : (
