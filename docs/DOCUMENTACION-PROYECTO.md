@@ -382,7 +382,7 @@ docker compose up -d
 ## Notas de Diseño
 
 - **Idioma**: Español (todo el texto面向 al usuario está en español)
-- **Moneda**: MXN (Peso Mexicano) via locale `es-MX`
+- **Moneda**: GTQ (Quetzal Guatemalteco) via locale `es-GT`
 - **Carrito**: Completamente del lado del cliente (Zustand + localStorage)
 - **Autenticación**: JWT en API (endpoints `/api/auth/login` y `/api/auth/register`), pero el frontend NO usa autenticación actualmente
 - **Color Accent**: Ember (#E85D04)

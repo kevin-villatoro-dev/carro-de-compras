@@ -111,7 +111,7 @@ export const api = {
 
 export function formatPrice(price: string | number): string {
   const num = typeof price === 'string' ? parseFloat(price) : price
-  return num.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })
+  return num.toLocaleString('es-GT', { style: 'currency', currency: 'GTQ' })
 }
 
 export function calcDiscount(price: string, compareAt: string): number {
