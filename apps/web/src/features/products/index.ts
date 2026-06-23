@@ -1,1 +1,1 @@
-export { useProducts } from './hooks/useProducts'
+export { useProducts, useProduct } from './hooks/useProducts'

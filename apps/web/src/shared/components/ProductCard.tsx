@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ShoppingCart } from 'lucide-react'
 import { useCartStore } from '@/features/cart/store/cartStore'
+import { calcDiscount } from '@/lib/api'
 import type { Product } from '@/lib/api'
 
 interface ProductCardProps {
@@ -11,23 +12,19 @@ interface ProductCardProps {
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem)
   const discount = product.compareAtPrice
-    ? Math.round(
-        ((parseFloat(product.compareAtPrice) - parseFloat(product.price)) /
-          parseFloat(product.compareAtPrice)) *
-          100
-      )
+    ? calcDiscount(product.price, product.compareAtPrice)
     : 0
 
   return (
     <div
-      className="card-shelf rounded-xl overflow-hidden animate-fade-in-up"
+      className="card-shelf group rounded-xl overflow-hidden animate-fade-in-up"
       style={{
         background: 'var(--color-paper)',
         animationDelay: `${index * 60}ms`,
       }}
     >
       {/* Image */}
-      <div className="relative aspect-square flex items-center justify-center overflow-hidden" style={{ background: '#f5f5f4' }}>
+      <div className="relative aspect-square flex items-center justify-center overflow-hidden" style={{ background: 'var(--color-surface)' }}>
         {product.images?.[0] ? (
           <img
             src={product.images[0]}

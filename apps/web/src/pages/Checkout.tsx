@@ -162,14 +162,14 @@ export default function Checkout() {
               
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: 'credit_card', label: 'Tarjeta de crédito', icon: '💳' },
-                  { value: 'debit_card', label: 'Tarjeta de débito', icon: '💳' },
-                  { value: 'paypal', label: 'PayPal', icon: '🅿️' },
+                  { value: 'credit_card' as const, label: 'Tarjeta de crédito', icon: '💳' },
+                  { value: 'debit_card' as const, label: 'Tarjeta de débito', icon: '💳' },
+                  { value: 'paypal' as const, label: 'PayPal', icon: '🅿️' },
                 ].map((method) => (
                   <button
                     key={method.value}
                     type="button"
-                    onClick={() => setPaymentMethod(method.value as any)}
+                    onClick={() => setPaymentMethod(method.value)}
                     className={`p-4 rounded-lg border-2 text-center transition-all ${
                       paymentMethod === method.value ? 'ring-2' : ''
                     }`}
@@ -189,10 +189,10 @@ export default function Checkout() {
             {/* Error message */}
             {checkoutMutation.isError && (
               <div className="rounded-lg p-4 flex items-start gap-3" style={{ background: 'rgba(239, 68, 68, 0.06)', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
-                <AlertCircle className="h-5 w-5 flex-none mt-0.5" style={{ color: '#ef4444' }} />
+                <AlertCircle className="h-5 w-5 flex-none mt-0.5" style={{ color: 'var(--color-crimson)' }} />
                 <div>
-                  <p className="text-sm font-medium" style={{ color: '#dc2626' }}>Error al procesar el pedido</p>
-                  <p className="text-xs mt-1" style={{ color: '#991b1b' }}>{checkoutMutation.error.message}</p>
+                  <p className="text-sm font-medium" style={{ color: 'var(--color-crimson)' }}>Error al procesar el pedido</p>
+                  <p className="text-xs mt-1" style={{ color: 'var(--color-crimson)' }}>{checkoutMutation.error.message}</p>
                 </div>
               </div>
             )}
@@ -240,7 +240,7 @@ export default function Checkout() {
             <div className="space-y-3 mb-5">
               {items.map((item) => (
                 <div key={item.id} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg flex-none overflow-hidden flex items-center justify-center" style={{ background: '#f5f5f4' }}>
+                  <div className="w-10 h-10 rounded-lg flex-none overflow-hidden flex items-center justify-center" style={{ background: 'var(--color-surface)' }}>
                     {item.image ? (
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
                     ) : (
