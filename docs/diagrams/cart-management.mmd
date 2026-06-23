@@ -1,0 +1,21 @@
+flowchart LR
+    subgraph local["Estado Local (Zustand + localStorage)"]
+        add["Agregar\nProducto"]
+        store["Almacenar\nen Carrito"]
+        view_cart["Ver Carrito\n(/cart)"]
+        update["Actualizar\nCantidad"]
+        remove["Eliminar\nItem"]
+        clear["Vaciar\nCarrito"]
+        summary["Resumen\nSubtotal + Envío\n+ Total"]
+        checkout["Ir a\nCheckout\n(/checkout)"]
+    end
+
+    add -->|addItem()| store
+    store -->|Persistir| view_cart
+    view_cart -->|+/- Cantidad| update
+    view_cart -->|Eliminar| remove
+    view_cart -.->|Vaciar Todo| clear
+    update -->|Recalcular| summary
+    remove -->|Recalcular| summary
+    clear -->|Total = $0| summary
+    summary -->|Pagar| checkout

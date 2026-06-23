@@ -1,0 +1,18 @@
+flowchart TD
+    start((Inicio)) --> catalog["Catálogo de\nProductos\n(/products)"]
+
+    catalog --> search["Buscar por\nNombre"]
+    catalog --> filter_cat["Filtrar por\nCategoría"]
+    catalog --> filter_brand["Filtrar por\nMarca"]
+
+    search -->|API GET ?search=| results["Resultados\nFiltrados"]
+    filter_cat -->|API GET ?category=| results
+    filter_brand -->|API GET ?brand=| results
+
+    results --> has_results{"¿Hay\nResultados?"}
+
+    has_results -->|Sí| product_card["Tarjeta de\nProducto\n(ProductCard)"]
+    has_results -->|No| empty_state["Estado Vacío\n'Sin Resultados'"]
+
+    product_card -->|Hacer clic| detail["Detalle del\nProducto\n(/products/:slug)"]
+    detail -->|Agregar| add_cart["Agregar al\nCarrito"]

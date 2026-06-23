@@ -1,0 +1,23 @@
+flowchart TD
+    start((Iniciar Checkout)) --> check_cart{"¿Carrito\nvacío?"}
+
+    check_cart -->|Sí| redirect["Redirigir a\nCatálogo"]
+    check_cart -->|No| address["Ingresar\nDirección de\nEnvío"]
+
+    address --> validate_addr{"Dirección\nválida?\n(≥10 caracteres)"}
+    validate_addr -->|No| address
+    validate_addr -->|Sí| payment["Seleccionar\nMétodo de\nPago"]
+
+    payment -->|Continuar| review["Revisar\nResumen del\nPedido"]
+    review -->|Pagar| submit["Confirmar\nPedido"]
+
+    submit --> api_call["POST\n/api/orders/checkout"]
+    api_call --> validate_stock{"Stock\nsuficiente?"}
+
+    validate_stock -->|No| error["Error\nMostrar\nMensaje"]
+    validate_stock -->|Sí| create_order["Crear Pedido\n+ Items\n(Transacción)"]
+
+    create_order -->|INSERT| decrement_stock["Decrementar\nStock\n(Atómico)"]
+    decrement_stock -->|COMMIT| success["¡Pedido\nExitoso!\nID: #xxx"]
+
+    error -.->|Reintentar| review

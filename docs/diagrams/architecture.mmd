@@ -1,0 +1,33 @@
+flowchart LR
+    subgraph consumer["Consumidor (Frontend)"]
+        browser["Navegador del\nConsumidor"]
+        vite["Vite 7 + React 19\nTailwind CSS v4"]
+        zustand["Zustand\n(Carrito Local)"]
+        tanstack["TanStack Query\n(Cache Server)"]
+    end
+
+    subgraph api["API REST"]
+        fastify["Fastify API\nServer"]
+        drizzle["Drizzle ORM"]
+        jwt["JWT Auth"]
+    end
+
+    subgraph admin["Admin Panel"]
+        laravel["Laravel 11\nBlade Templates"]
+        eloquent["Eloquent ORM"]
+    end
+
+    subgraph data["Capa de Datos"]
+        postgres[("PostgreSQL 16")]
+    end
+
+    browser -->|HTTP| vite
+    vite -->|Estado| zustand
+    vite -->|Datos| tanstack
+    tanstack -->|REST API| fastify
+    fastify -->|Queries| drizzle
+    fastify -->|Tokens| jwt
+    drizzle -->|SQL| postgres
+    laravel -->|ORM| eloquent
+    eloquent -->|SQL| postgres
+    laravel -.->|Comparte DB| fastify
